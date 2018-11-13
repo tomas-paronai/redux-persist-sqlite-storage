@@ -46,7 +46,7 @@ export default function SQLiteStorage(SQLite = {}, config = {}) {
           tx.executeSql(
             'SELECT value FROM store WHERE key=?', [key],
             (tx, rs) => {
-              const item = rs.rows.item(0) || {};
+              const item = rs.rows.item(0) || { value: {} };
               resolve(item.value);
               cb(null, item.value);
             },
